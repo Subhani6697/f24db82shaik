@@ -1,18 +1,19 @@
-extends layout
-
-block content
-  h1= title
-  - const results = [{ material: 'Wood', shelves: 4, color: 'Oak' },{ material: 'Metal', shelves: 3, color: 'Black' },{ material: 'Glass', shelves: 5, color: 'Clear' }];
-  .container-fluid
-    .row
-      each item, index in results
-        div(class="col-sm-2", onclick=`buy(${index})`)
-            h4 #{item.material}
-            p Shelves: #{item.shelves}
-            p Color: $#{item.color}
-
-            script.
-              function buy(itemNum){
-                alert(`you Purchased item ${itemNum + 1}`);
-              }
-              
+// views/bookshelves.pug
+doctype html
+html
+  head
+    title Bookshelves
+  body
+    h1 List of Bookshelves
+    table
+      thead
+        tr
+          th Name
+          th Material
+          th Shelves
+      tbody
+        each bookshelf in items
+          tr
+            td= bookshelf.name
+            td= bookshelf.material
+            td= bookshelf.shelves

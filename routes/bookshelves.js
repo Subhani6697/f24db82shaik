@@ -1,9 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const bookshelvesController = require('../controllers/bookshelves');
 
-/* GET bookshelves page. */
-router.get('/', function(req, res, next) {
-  res.render('bookshelves', { title: 'Search Results - Bookshelves' });
-});
+// GET request to fetch all bookshelves
+router.get('/', bookshelvesController.getAllBookshelves);
+
+// POST request to create a new bookshelf
+router.post('/', bookshelvesController.createBookshelf);
 
 module.exports = router;
