@@ -1,5 +1,5 @@
 var express = require('express');
-const artifact_controller = require('../controllers/bookshelve');
+const artifact_controller = require('../controllers/bookshelveController');
 var router = express.Router();
 // GET request to fetch all artifacts
 router.get('/', bookshelve_controller.bookshelve_list);
