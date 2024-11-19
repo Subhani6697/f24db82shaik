@@ -3,10 +3,10 @@ var Bookshelf = require('../models/bookshelves');
 exports.bookshelves_list = async function (req, res) {
   try {
     // Fetch all potions from the database
-    const allBookshelves = await Bookshelf.find();
+    const allBookshelfs = await Bookshelf.find();
 
     // Send the list of potions as a JSON response
-    res.json(allBookshelves);
+    res.render('bookshelves', { title: 'Bookshelf Search Results', results: allBookshelfs });
   }
   catch (err) {
     // If an error occurs, return status 500 with the error message

@@ -1,5 +1,5 @@
 require('dotenv').config();
-const mongoose = require('mongoose');
+mongoose = require('mongoose');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -19,7 +19,7 @@ var app = express();
 
 // MongoDB connection setup
 const connectionString = process.env.MONGO_CON;
-mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(connectionString);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once("open", function() {
