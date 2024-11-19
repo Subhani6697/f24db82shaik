@@ -1,22 +1,44 @@
-const Bookshelf = require('../models/bookshelves');
-
-// Function to handle the GET request to list all bookshelves
-exports.getAllBookshelves = async (req, res) => {
+var Bookshelf = require('../models/bookshelves');
+// List of all Costumes
+exports.bookshelves_list = async function (req, res) {
   try {
-    const results = await Bookshelf.find(); // Fetch all bookshelves from DB
-    res.status(200).json(results); // Send the results as a JSON response
-  } catch (err) {
-    res.status(500).json({ message: "Error fetching bookshelves", error: err });
+    // Fetch all potions from the database
+    const allBookshelves = await Bookshelf.find();
+
+    // Send the list of potions as a JSON response
+    res.json(allBookshelves);
+  }
+  catch (err) {
+    // If an error occurs, return status 500 with the error message
+    res.status(500).send(`{"error": ${err}}`);
   }
 };
-
-// Function to handle the POST request to create a new bookshelf
-exports.createBookshelf = async (req, res) => {
-  try {
-    const newBookshelf = new Bookshelf(req.body);
-    await newBookshelf.save();
-    res.status(201).json(newBookshelf);
-  } catch (err) {
-    res.status(500).json({ message: "Error creating bookshelf", error: err });
-  }
+// for a specific Bookshelves.
+exports.bookshelves_detail = function (req, res) {
+  res.send('NOT IMPLEMENTED: Bookshelves detail: ' + req.params.id);
 };
+// Handle Costume create on POST.
+exports.bookshelves_create_post = async function(req, res) {
+  console.log(req.body);
+
+    let newBookshelf = new Bookshelf({
+      name: req.body.name,
+      material: req.body.material,
+      shelves: req.body.shelves
+    });
+    try {
+      const result = await newBookshelf.save();
+      res.status(201).json(result);
+    } catch (err) {
+      res.status(500).send({ error: err.message });
+    }
+  };
+
+  // Handle Costume delete from on DELETE.
+  exports.bookshelves_delete = function (req, res) {
+    res.send('NOT IMPLEMENTED: Bookshelves delete DELETE ' + req.params.id);
+  };
+  // Handle Costume update form on PUT.
+  exports.bookshelves_update_put = function (req, res) {
+    res.send('NOT IMPLEMENTED: Bookshelves update PUT' + req.params.id);
+  };

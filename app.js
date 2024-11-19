@@ -12,9 +12,8 @@ var usersRouter = require('./routes/users');
 var bookshelvesRouter = require('./routes/bookshelves');
 var gridRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick');
-
-// Import model
-const Bookshelf = require("./models/bookshelves");  // Matches the file name in /models
+var Bookshelf = require("./models/bookshelves");
+var resourceRouter = require('./routes/resource');
 
 var app = express();
 
@@ -60,9 +59,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes setup
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/resource/bookshelves', bookshelvesRouter); // Updated route path
+app.use('/bookshelves', bookshelvesRouter);
 app.use('/grid', gridRouter);
-app.use('/pick', pickRouter);
+app.use('/randomitem', pickRouter);
+app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -71,9 +71,11 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+  // render the error page
   res.status(err.status || 500);
   res.render('error');
 });
