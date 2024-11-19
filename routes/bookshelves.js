@@ -1,8 +1,8 @@
 var express = require('express');
-const artifact_controller = require('../controllers/bookshelves');
+const artifact_controller = require('../controllers/bookshelve');
 var router = express.Router();
 // GET request to fetch all artifacts
-router.get('/', bookshelves_controller.bookshelves_list);
+router.get('/', bookshelve_controller.bookshelve_list);
 // POST request to create a new artifact
-router.post('/bookshelves', bookshelves_controller.bookshelves_create_post);
+router.post('/bookshelves', bookshelve_controller.bookshelve_create_post);
 module.exports = router;

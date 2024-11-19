@@ -1,6 +1,6 @@
-var Bookshelf = require('../models/bookshelves');
+var Bookshelf = require('../models/bookshelve');
 // List of all Costumes
-exports.bookshelves_list = async function (req, res) {
+exports.bookshelve_list = async function (req, res) {
   try {
     // Fetch all potions from the database
     const allBookshelfs = await Bookshelf.find();
@@ -14,11 +14,11 @@ exports.bookshelves_list = async function (req, res) {
   }
 };
 // for a specific Bookshelves.
-exports.bookshelves_detail = function (req, res) {
+exports.bookshelve_detail = function (req, res) {
   res.send('NOT IMPLEMENTED: Bookshelves detail: ' + req.params.id);
 };
 // Handle Costume create on POST.
-exports.bookshelves_create_post = async function(req, res) {
+exports.bookshelve_create_post = async function(req, res) {
   console.log(req.body);
 
     let newBookshelf = new Bookshelf({
@@ -35,10 +35,10 @@ exports.bookshelves_create_post = async function(req, res) {
   };
 
   // Handle Costume delete from on DELETE.
-  exports.bookshelves_delete = function (req, res) {
+  exports.bookshelve_delete = function (req, res) {
     res.send('NOT IMPLEMENTED: Bookshelves delete DELETE ' + req.params.id);
   };
   // Handle Costume update form on PUT.
-  exports.bookshelves_update_put = function (req, res) {
+  exports.bookshelve_update_put = function (req, res) {
     res.send('NOT IMPLEMENTED: Bookshelves update PUT' + req.params.id);
   };

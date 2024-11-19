@@ -12,7 +12,7 @@ var usersRouter = require('./routes/users');
 var bookshelvesRouter = require('./routes/bookshelves');
 var gridRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick');
-var Bookshelf = require("./models/bookshelves");
+var Bookshelf = require("./models/bookshelve");
 var resourceRouter = require('./routes/resource');
 
 var app = express();
