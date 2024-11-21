@@ -1,19 +1,8 @@
-// views/bookshelves.pug
-doctype html
-html
-  head
-    title Bookshelves
-  body
-    h1 List of Bookshelves
-    table
-      thead
-        tr
-          th Name
-          th Material
-          th Shelves
-      tbody
-        each bookshelf in items
-          tr
-            td= bookshelf.name
-            td= bookshelf.material
-            td= bookshelf.shelves
+extends layout
+
+block content
+  h1= title
+  each site in results
+    h3 Name: #{site.name}
+    li Material: #{site.material}
+    li Number of Shelves: #{site.shelves}

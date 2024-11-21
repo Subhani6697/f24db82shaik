@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1.text-center.text-info.mt-5= title
+
+  if (toShow == null)
+    h2.text-center.text-muted.mt-3 No details available for this bookshelve
+  else
+    - let shelveId = toShow._id
+    - let name = toShow.name
+    - let material = toShow.material
+    - let shelves = toShow.shelves
+
+    div.container.mt-5
+      div.card.shadow-lg.border-info
+        div.card-header.bg-primary.text-white
+          h3 Bookshelve Details
+        div.card-body
+          div.row
+            div.col-md-6.mb-3
+              strong Bookshelve ID:
+              p #{shelveId}
+            div.col-md-6.mb-3
+              strong Bookshelve Name:
+              p #{name}
+            div.col-md-6.mb-3
+              strong Material:
+              p #{material}
+            div.col-md-6.mb-3
+              strong Number of Shelves:
+              p #{shelves}
+        div.card-footer.text-center
+          a.btn.btn-primary(href='/bookshelveSites') Back to List

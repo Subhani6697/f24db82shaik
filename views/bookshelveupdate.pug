@@ -1,0 +1,48 @@
+extends layout
+
+block content
+    h1= title
+    - let shelveid = toShow._id
+    - let name = toShow.name
+    - let material = toShow.material
+    - let shelves = toShow.shelves
+
+    div.row(class='mb-2')
+        div.mr-1 ID is:
+        div #{shelveid}
+
+    // Prepare the form for updating the bookshelve
+    - let actionid = "/resource/bookshelveSites/" + shelveid
+    form(id='BookshelveForm', action=actionid, method="PUT")
+        div.form-group
+            label(for='name') Bookshelve Name
+            input#name(type='text', name='name', value=name)
+
+        div.form-group
+            label(for='material') Material
+            input#material(type='text', name='material', value=material)
+
+        div.form-group
+            label(for='shelves') Number of Shelves
+            input#shelves(type='number', name='shelves', value=shelves)
+
+        input(type="submit")
+
+    // Client-side script to intercept form submission
+    script.
+        document.forms['BookshelveForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            // Show user that form is being submitted
+            fetch(event.target.action, {
+                method: 'PUT',
+                body: new URLSearchParams(new FormData(event.target)) // Form data
+            }).then((resp) => {
+                return resp.json(); // Expecting a JSON response
+            }).then((body) => {
+                alert("Update succeeded");
+                // Optionally handle response body
+            }).catch((error) => {
+                alert("Update failed " + error);
+                // Handle error
+            });
+        });

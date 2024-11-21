@@ -1,10 +1,9 @@
-// models/bookshelve.js
 const mongoose = require("mongoose");
 
-// Define the schema for the Bookshelf collection
-const bookshelfSchema = new mongoose.Schema({
-  name: String,
-  material: String,
-  shelves: Number
-})
-module.exports = mongoose.model("Bookshelf", bookshelfSchema)
+const bookshelveSchema = new mongoose.Schema({
+  name: String,        // Name of the bookshelve
+  material: String,    // Material used for the bookshelve
+  shelves: Number      // Number of shelves in the bookshelve
+});
+
+module.exports = mongoose.model("Bookshelve", bookshelveSchema);
