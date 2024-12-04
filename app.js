@@ -27,7 +27,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var gridRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick');
-var bookshelvesRouter = require('./routes/bookshelve'); 
+var bookshelvesRouter = require('./routes/bookshelves'); 
 var resourceRouter = require('./routes/resource');
 const Bookshelve = require('./models/bookshelve');
 
