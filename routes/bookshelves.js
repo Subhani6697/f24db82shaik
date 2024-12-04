@@ -13,7 +13,7 @@ router.get('/detail', detail_controller.bookshelve_create_Page);
 router.get('/create', detail_controller.bookshelve_create_Page);
 
 // Render the page for updating an existing bookshelve
-router.get('/update', secured, detail_controller.bookshelve_update_Page);
+router.get('/update', detail_controller.bookshelve_update_Page);
 
 // Render the page to delete an existing bookshelve
 router.get('/delete', detail_controller.bookshelve_delete_Page);
