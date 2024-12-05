@@ -1,33 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const bookshelveController = require('../controllers/bookshelve');
-const detail_controller = require('../controllers/detail_controller');
+const secured = (req, res, next) => {
+    if (req.user) {
+        return next();
+    }
+    res.redirect("/login");
+};
 
-// Routes for Bookshelve
+// Route to view all book shelves in a web page
+router.get('/', bookshelveController.bookshelve_view_all_Page);
 
-// Get all bookshelve sites and display them on the page
-router.get('/', bookshelveController.bookshelve_list);
+router.get('/create', (req, res) => res.render('bookshelve_create_form'));
 
-// Render the page for creating a new bookshelve
-router.get('/detail', detail_controller.bookshelve_create_Page);
-router.get('/create', detail_controller.bookshelve_create_Page);
+/* GET delete book shelve page */
+router.get('/bookshelves/delete', secured, bookshelveController.bookshelve_delete_Page);
 
-// Render the page for updating an existing bookshelve
-router.get('/update', detail_controller.bookshelve_update_Page);
-
-// Render the page to delete an existing bookshelve
-router.get('/delete', detail_controller.bookshelve_delete_Page);
-
-// Get the details of a specific bookshelve by ID
-router.get('/bookshelves/:id', bookshelveController.bookshelve_detail);
-
-// Create a new bookshelve using POST request
-router.post('/bookshelves', bookshelveController.bookshelve_create_post);
-
-// Update an existing bookshelve using PUT request
-router.put('/bookshelves/:id', bookshelveController.bookshelve_update_put);
-
-// Delete a specific bookshelve using DELETE request
-router.delete('/bookshelves/:id', bookshelveController.bookshelve_delete);
-
+// Export the router
 module.exports = router;

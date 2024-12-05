@@ -2,8 +2,35 @@ extends layout
 
 block content
   h1= title
-  each site in results
-    h3 Name: #{site.name}
-    li Material: #{site.material}
-    li Number of Shelves: #{site.shelves}
-    a(href=`/update/${site._id}` class="btn btn-primary") Update
+  // Add a "Create New Book Shelve" button at the top
+  a.btn.btn-success.mb-3(href='/resource/bookshelves/create') Create New Book Shelve
+  // Loop through the shelves in the collection
+  each shelve in results
+    div(class="card my-3 p-3 border")
+      h3 Name: #{shelve.name}
+      ul
+        li Material: #{shelve.material}
+        li Shelves: #{shelve.shelves}
+
+      // Button to navigate to the update page
+      button.btn.btn-primary.mt-2(onclick=`navigateToUpdate('${shelve._id}')`) Update
+
+      // Button to navigate to the detail view
+      button.btn.btn-info.mt-2(onclick=`navigateToDetails('${shelve._id}')`) View Details
+
+      // Button to navigate to the delete view
+      button.btn.btn-danger.mt-2(onclick=`navigateToDelete('${shelve._id}')`) Delete
+
+  // Add a script to handle the navigation
+  script.
+    function navigateToUpdate(shelveId) {
+      window.location.href = `/resource/update?id=${shelveId}`;;
+    }
+
+    function navigateToDetails(shelveId) {
+      window.location.href = `/resource/bookshelves/detail?id=${shelveId}`;
+    }
+
+    function navigateToDelete(shelveId) {
+      window.location.href = `/bookshelves/delete?id=${shelveId}`;
+    }

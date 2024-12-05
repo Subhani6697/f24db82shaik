@@ -9,7 +9,7 @@ block content
     - let name = toShow.name
     - let material = toShow.material
     - let shelves = toShow.shelves
-    - let actionid = "/resource/bookshelveSites/" + shelveid
+    - let actionid = "/resource/bookshelves/" + shelveid
     script let actionid = "#{actionid}"
     div
       div.row
@@ -28,7 +28,7 @@ block content
     button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
   script.
       function cancel() {
-        window.location.href = '/bookshelveSites';
+        window.location.href = '/bookshelves';
         }
   script.
     function deleteOnid() {
@@ -39,7 +39,7 @@ block content
         return resp.json();
         }).then((body) => {
         alert("Delete succeeded");
-        window.location.href = '/bookshelveSites';
+        window.location.href = '/bookshelves';
         }).catch((error) => {
         alert("Delete failed: " + error);
       });

@@ -7,9 +7,9 @@ block content
     h2.text-center.text-muted.mt-3 No details available for this bookshelve
   else
     - let shelveId = toShow._id
-    - let name = toShow.name
-    - let material = toShow.material
-    - let shelves = toShow.shelves
+    - let siteName = toShow.name
+    - let siteMaterial = toShow.material
+    - let siteShelves = toShow.shelves
 
     div.container.mt-5
       div.card.shadow-lg.border-info
@@ -22,12 +22,12 @@ block content
               p #{shelveId}
             div.col-md-6.mb-3
               strong Bookshelve Name:
-              p #{name}
+              p #{siteName}
             div.col-md-6.mb-3
               strong Material:
-              p #{material}
+              p #{siteMaterial}
             div.col-md-6.mb-3
               strong Number of Shelves:
-              p #{shelves}
+              p #{siteShelves}
         div.card-footer.text-center
-          a.btn.btn-primary(href='/bookshelveSites') Back to List
+          a.btn.btn-primary(href='/bookshelves') Back to List
