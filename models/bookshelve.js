@@ -7,15 +7,15 @@ const BookshelveSchema = new mongoose.Schema({
         minlength: [3, 'Bookshelve name must be at least 3 characters long'],  // Minimum length for name
         maxlength: [100, 'Bookshelve name cannot exceed 100 characters'],  // Maximum length for name
     },
-    capacity: {
+    material: {
         type: Number,
-        required: [true, 'Capacity is required'],
-        min: [1, 'Capacity must be at least 1'],  // Capacity should be at least 1
-        max: [1000, 'Capacity seems too large, check for valid input'],  // Upper limit for capacity
+        required: [true, 'Material is required'],
+        min: [1, 'Material must be at least 1'],  // Capacity should be at least 1
+        max: [1000, 'Material seems too large, check for valid input'],  // Upper limit for capacity
     },
-    location: {
+    shelves: {
         type: String,
-        required: [true, 'Location is required'],
+        required: [true, 'Shelve is required'],
     },
 });
 
